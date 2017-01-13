@@ -1,0 +1,150 @@
+<html>
+<head>
+    <meta name="google-signin-client_id" content="628531512920-arim9k90e5j7bf4aomg8rb56dr0cp9vt.apps.googleusercontent.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/crypto-js/3.1.2/rollups/md5.js"></script>
+
+    <link rel="stylesheet" href="css/style.css">
+    <script src="js/google_login.js"></script>
+    <script src="js/default_login.js"></script>
+    <script type="text/javascript" src="js/facebook_login.js"></script>
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '622129601327484',
+                xfbml      : true,
+                version    : 'v2.1'
+            });
+        };
+
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+</head>
+<body>
+<div class="logmod">
+    <div class="logmod__wrapper">
+        <span class="logmod__close">Close</span>
+        <div class="logmod__container">
+            <ul class="logmod__tabs">
+                <li data-tabtar="lgm-2"><a href="#">Login</a></li>
+                <li data-tabtar="lgm-1"><a href="#">Sign Up</a></li>
+            </ul>
+            <div class="logmod__tab-wrapper">
+                <div class="logmod__tab lgm-1">
+                    <div class="logmod__heading">
+                        <span class="logmod__heading-subtitle">Enter your personal details <strong>to create an acount</strong></span>
+                    </div>
+                    <div class="logmod__form">
+                        <form accept-charset="utf-8" action="#" class="simform">
+                            <div class="sminputs">
+                                <div class="input full">
+                                    <label class="string optional" for="user-email-create">Email*</label>
+                                    <input class="string optional" maxlength="255" id="user-email-create" placeholder="Email" type="email" size="50" />
+                                </div>
+                            </div>
+                            <div class="sminputs">
+                                <div class="input string optional">
+                                    <label class="string optional" for="user-pw-create">Password *</label>
+                                    <input class="string optional" maxlength="255" id="user-pw-create" placeholder="Password" type="text" size="50" />
+                                </div>
+                                <div class="input string optional">
+                                    <label class="string optional" for="user-pw-repeat-create">Repeat password *</label>
+                                    <input class="string optional" maxlength="255" id="user-pw-repeat-create" placeholder="Repeat password" type="text" size="50" />
+                                </div>
+                            </div>
+                            <div class="simform__actions">
+                                <input class="sumbit" name="commit" type="sumbit" value="Create Account" onclick="default_create_account()"/>
+                                <span class="simform__actions-sidetext">By creating an account you agree to our <a class="special" href="#" target="_blank" role="link">Terms & Privacy</a></span>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="logmod__alter">
+                        <div class="logmod__alter-container">
+                            <a href="#" class="connect facebook" onclick="fb_login()">
+                                <div class="connect__icon">
+                                    <i class="fa fa-facebook"></i>
+                                </div>
+                                <div class="connect__context">
+                                    <span>Create an account with <strong>Facebook</strong></span>
+                                </div>
+                            </a>
+
+                            <a href="#" class="connect googleplus" onclick="startApp()">
+                                <div class="connect__icon">
+                                    <i class="fa fa-google"></i>
+                                </div>
+                                <div class="connect__context">
+                                    <span>Create an account with <strong>Google</strong></span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+                <div class="logmod__tab lgm-2">
+                    <div class="logmod__heading">
+                        <span class="logmod__heading-subtitle">Enter your email and password <strong>to sign in</strong></span>
+                    </div>
+                    <div class="logmod__form">
+                        <form accept-charset="utf-8" action="#" class="simform">
+                            <div class="sminputs">
+                                <div class="input full">
+                                    <label class="string optional" for="user-email">Email*</label>
+                                    <input class="string optional" maxlength="255" id="user-email" placeholder="Email" type="email" size="50" />
+                                </div>
+                            </div>
+                            <div class="sminputs">
+                                <div class="input full">
+                                    <label class="string optional" for="user-pw">Password *</label>
+                                    <input class="string optional" maxlength="255" id="user-pw" placeholder="Password" type="password" size="50" />
+                                    <span class="hide-password">Show</span>
+                                </div>
+                            </div>
+                            <div class="simform__actions">
+                                <input class="sumbit" name="commit" type="sumbit" value="Log In" onclick="default_login()"/>
+                                <span class="simform__actions-sidetext"><a class="special" role="link" href="#">Forgot your password?<br>Click here</a></span>
+                            </div>
+                        </form>
+                    </div>
+                    <div class="logmod__alter">
+                        <div class="logmod__alter-container">
+                            <a href="#" class="connect facebook" onclick="fb_login()">
+                                <div class="connect__icon">
+                                    <i class="fa fa-facebook"></i>
+                                </div>
+                                <div class="connect__context">
+                                    <span>Sign in with <strong>Facebook</strong></span>
+                                </div>
+                            </a>
+                            <a id="googleV" href="#" class="connect googleplus" onclick="startApp()">
+                                <div class="connect__icon">
+                                    <i class="fa fa-google"></i>
+                                </div>
+                                <div class="connect__context" >
+                                    <span>Sign in with <strong>Google</strong></span>
+                                </div>
+                            </a>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+<script>startApp();</script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+<script src="js/index.js"></script>
+
+
+<script src="https://apis.google.com/js/platform.js?onload=renderButton" async defer></script>
+</body>
+</html>

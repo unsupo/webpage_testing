@@ -1,0 +1,60 @@
+<html>
+<head>
+    <meta name="google-signin-client_id" content="628531512920-arim9k90e5j7bf4aomg8rb56dr0cp9vt.apps.googleusercontent.com">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css">
+    <link href="https://fonts.googleapis.com/css?family=Roboto" rel="stylesheet" type="text/css">
+    <script src="https://apis.google.com/js/api:client.js"></script>
+
+    <link rel='stylesheet prefetch' href='http://maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css'>
+
+    <link rel="stylesheet" href="../css/style.css">
+    <script>
+        window.fbAsyncInit = function() {
+            FB.init({
+                appId      : '622129601327484',
+                xfbml      : true,
+                version    : 'v2.1'
+            });
+        };
+
+        (function(d, s, id){
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) {return;}
+            js = d.createElement(s); js.id = id;
+            js.src = "//connect.facebook.net/en_US/sdk.js";
+            fjs.parentNode.insertBefore(js, fjs);
+        }(document, 'script', 'facebook-jssdk'));
+    </script>
+</head>
+<body>
+<p>Hello You're logged in</p>
+
+<br/><br/>
+<a href="#" onclick="signOut();">Sign out</a>
+<script>
+    function signOut() {
+        function fbLogoutUser() {
+            FB.getLoginStatus(function(response) {
+                if (response && response.status === 'connected') {
+                    FB.logout(function(response) {
+//                        document.location.reload();
+                        console.log('User signed out.');
+                    });
+                }
+            });
+        }
+        try {
+            fbLogoutUser();
+            var auth2 = gapi.auth2.getAuthInstance();
+            auth2.signOut().then(function () {
+                console.log('User signed out.');
+            });
+        }catch (e){
+            console.log(e);
+        }
+    }
+</script>
+<script src='http://cdnjs.cloudflare.com/ajax/libs/jquery/2.1.3/jquery.min.js'></script>
+
+</body>
+</html>
